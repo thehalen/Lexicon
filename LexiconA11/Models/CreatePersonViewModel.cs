@@ -15,13 +15,15 @@ namespace LexiconA11.Models
 
 		[DataType(DataType.PhoneNumber)]
 		[Display(Name = "Phone number: ")]
+		[Required]
 		public string PhoneNr { get; set; }
 
 		[DataType(DataType.Text)]
 		[Display(Name = "City: ")]
+		[Required]
 		public string City { get; set; }
 
-
+		[Key]
 		public int Id { get; set; }
 
 		public CreatePersonViewModel()

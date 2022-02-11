@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LexiconA11.Models;
 
 namespace LexiconA11.Data
 {
@@ -13,6 +14,11 @@ namespace LexiconA11.Data
 
         }
 
+        public DbSet<PersonModel> People { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder entityModelBuilder)
+        {
+            entityModelBuilder.Seed();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,11 +8,12 @@ namespace LexiconA11.Models
 {
     public class PersonModel : CreatePersonViewModel
     {
+        [Key]
+        private new static int Id = 0;
 
-        private static int id = 0;
         public static int GetNewID()
         {            
-            return id++;
+            return Id++;
         }
 
 

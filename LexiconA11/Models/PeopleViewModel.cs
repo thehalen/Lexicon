@@ -12,7 +12,7 @@ namespace LexiconA11.Models
         public string filterC ="",filterN;
 		public static string filter_C="*", filter_N="*";
 
-		private static List<PersonModel> personsListView = new List<PersonModel>();
+		public static List<PersonModel> personsListView = new List<PersonModel>();
 		public static List<PersonModel> listOfPeople = new List<PersonModel>();
 
         public static List<PersonModel> PersonsListView
@@ -23,7 +23,7 @@ namespace LexiconA11.Models
 				var foo = listOfPeople.Where(c => c.City == filter_C && c.Name == filter_N);
 				PeopleViewModel.personsListView.AddRange(foo);
 				return listOfPeople;
-				return PeopleViewModel.personsListView;
+				//return PeopleViewModel.personsListView;
 			}
 			set => personsListView = value;
 		}
