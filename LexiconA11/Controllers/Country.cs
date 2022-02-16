@@ -19,9 +19,21 @@ namespace LexiconA11.Controllers
 
         public IActionResult Index()
         {
-            //PeopleViewModel personVM = new();
-            //PeopleViewModel.listOfPeople = _context.People.ToList();
-            return View();
+            Geographics citiesVM = new Geographics
+            {
+                CityList = _context.Cities.ToList(),
+                CountryList = _context.Countries.ToList()
+            };
+            return View(citiesVM);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var p = _context.Countries.Find(id);
+            _context.Remove(p);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

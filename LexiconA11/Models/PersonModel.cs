@@ -6,28 +6,45 @@ using System.Threading.Tasks;
 
 namespace LexiconA11.Models
 {
-    public class PersonModel : CreatePersonViewModel
+    public class PersonModel 
     {
+        [DataType(DataType.Text)]
+        [Display(Name = "Name: ")]
+        [Required(ErrorMessage = "Name is required!"), MaxLength(80), MinLength(4)]
+        public string Name { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Phone number: ")]
+        [Required]
+        public string PhoneNr { get; set; }
+
+        //[DataType(DataType.Text)]
+        //[Display(Name = "City: ")]
+        //[Required]
+        public CityModel City { get; set; }
+        public int CityId { get; set; }
+
         [Key]
-        private new static int Id = 0;
+        public int PersonId { get; set; }
+        public static int Counter = 0;
 
         public static int GetNewID()
         {            
-            return Id++;
+            return Counter++;
         }
 
 
         public PersonModel()
         {
-            Id = GetNewID();
+            PersonId = GetNewID();
         }
 
-        public PersonModel(string name, string city, string phonenr)
+        public PersonModel(string name, int cityId, string phonenr)
         {
             Name = name;
-            City = city;
+            CityId = cityId;
             PhoneNr = phonenr;
-            Id = GetNewID();
+            PersonId = GetNewID();
         }
 
 

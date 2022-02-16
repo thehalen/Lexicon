@@ -10,11 +10,11 @@ namespace LexiconA11.Controllers
     public class Persons : Controller
     {
         public IActionResult Index()        {
-
+            PeopleViewModel personVM = new();
             //PeopleViewModel persons = new PeopleViewModel();
-            if (PeopleViewModel.PersonsListView.Count < 1)
+            if (personVM.PersonsListView.Count < 1)
             {
-                PeopleViewModel.MakePeople();
+                personVM.MakePeople();
             }
             return View();
         }
@@ -25,7 +25,7 @@ namespace LexiconA11.Controllers
             PeopleViewModel peopleViewModel = new();
 
             peopleViewModel.AddPerson(personVM.Name,
-                                      personVM.City,
+                                      personVM.CityId,
                                       personVM.PhoneNr) ;
             if (ModelState.IsValid)
             {
@@ -35,7 +35,7 @@ namespace LexiconA11.Controllers
 
         public IActionResult DeletePerson(int id)
         {
-            PeopleViewModel.DeletePerson(id);
+            //PeopleViewModel.DeletePerson(id);
             return RedirectToAction("Index");
         }
     }

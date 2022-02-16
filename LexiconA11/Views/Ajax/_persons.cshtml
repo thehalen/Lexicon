@@ -16,12 +16,12 @@
         @foreach(var person in Model)
         {
         <div class="row">
-            <div class="col-lg-1">@person.Id</div>
+            <div class="col-lg-1">@person.PersonId</div>
             <div class="col-lg-4">@person.Name</div>
-            <div class="col-lg-3">@person.City</div>
+            <div class="col-lg-3">@person.City.Name</div>
             <div class="col-lg-3">@person.PhoneNr</div>
             <div class="col-lg-1">
-                <a href="#" onclick="DeletePersonByIdRow(@person.Id)">Remove</a>
+                <a href="#" onclick="DeletePersonByIdRow(@person.PersonId)">Remove</a>
             </div>
         </div>
         }

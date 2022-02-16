@@ -9,19 +9,20 @@ namespace LexiconA11.Models
     public class CountryModel
     {
         [Key]
-        public static int Id = 0;
+        public int CountryId { get; set; }
+        private static int Counter = 0;
         public string Name { get; set; }
         public List<CityModel> Cities { get; set; }
 
         public static int GetNewID()
         {
-            return Id++;
+            return Counter++;
         }
 
 
         public CountryModel()
         {
-            Id = GetNewID();
+            CountryId = GetNewID();
         }
     }
 }

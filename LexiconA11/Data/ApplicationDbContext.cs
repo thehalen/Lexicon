@@ -16,9 +16,15 @@ namespace LexiconA11.Data
 
         public DbSet<PersonModel> People { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder entityModelBuilder)
+        public DbSet<CountryModel> Countries { get; set; }
+        public DbSet<CityModel> Cities { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            entityModelBuilder.Seed();
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Seed();
         }
     }
 }

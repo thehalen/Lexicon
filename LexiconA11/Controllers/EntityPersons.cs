@@ -1,6 +1,7 @@
 ﻿using LexiconA11.Data;
 using LexiconA11.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,9 @@ namespace LexiconA11.Controllers
         public IActionResult Index()
         {
             PeopleViewModel personVM = new();
-            PeopleViewModel.listOfPeople = _context.People.ToList();
+
+            personVM.listOfPeople = _context.People.Include(p => p.City).ToList();
+            //PeopleViewModel.listOfPeople = _context.People.ToList();
             return View(personVM);
         }
 
@@ -28,7 +31,7 @@ namespace LexiconA11.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.People.Add(new PersonModel { Name = personVM.Name, City = personVM.City, PhoneNr = personVM.PhoneNr });
+                _context.People.Add(new PersonModel { Name = personVM.Name, CityId = personVM.CityId, PhoneNr = personVM.PhoneNr });
                 _context.SaveChanges();
             }
 

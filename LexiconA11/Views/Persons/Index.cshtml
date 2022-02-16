@@ -39,14 +39,14 @@
         </tr>
     </tdead>
     <tbody>
-        @foreach (PersonModel person in PeopleViewModel.PersonsListView)
+        @foreach (PersonModel person in Model.listOfPeople)
         {
         <tr>
-            <td>@person.Id</td>
+            <td>@person.PersonId</td>
             <td>@person.Name</td>
-            <td>@person.City</td>
+            <td>@person.City.Name</td>
             <td>@person.PhoneNr</td>
-            <td><a href="/Persons/DeletePerson?id=@person.Id">Remove</a></td>
+            <td><a href="/Persons/DeletePerson?id=@person.PersonId">Remove</a></td>
         </tr>
         }
     </tbody>

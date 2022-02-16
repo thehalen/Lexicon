@@ -18,13 +18,15 @@ namespace LexiconA11.Models
 		[Required]
 		public string PhoneNr { get; set; }
 
-		[DataType(DataType.Text)]
+		
 		[Display(Name = "City: ")]
 		[Required]
-		public string City { get; set; }
+		public CityModel City { get; set; }
+		public int CityId { get; set; }
 
 		[Key]
-		public int Id { get; set; }
+		public int PersonId { get; set; }
+		public static int Id = 0;
 
 		public CreatePersonViewModel()
 		{

@@ -11,33 +11,35 @@ namespace LexiconA11.Controllers
     {
         public IActionResult Index()
         {
-            if (PeopleViewModel.PersonsListView.Count < 1)
+            PeopleViewModel personVM = new();
+
+            if (personVM.PersonsListView.Count < 1)
             {
-                PeopleViewModel.MakePeople();
+                personVM.MakePeople();
             }
             return View();
         }
 
-        [HttpGet]
-        public IActionResult GetPersons()
-        {
-            List<PersonModel> personModel = PeopleViewModel.listOfPeople;
-            return PartialView("_persons", personModel);
-        }
+        //[HttpGet]
+        //public IActionResult GetPersons()
+        //{
+        //    List<PersonModel> personModel = listOfPeople;
+        //    return PartialView("_persons", personModel);
+        //}
 
-        [HttpPost]
-        public IActionResult GetPersonByID(int PersonID)
-        {
-            PersonModel personModel = PeopleViewModel.GetPersonByID(PersonID);
-            return PartialView("_persons", personModel);
-        }
+        //[HttpPost]
+        //public IActionResult GetPersonByID(int PersonID)
+        //{
+        //    PersonModel personModel = GetPersonByID(PersonID);
+        //    return PartialView("_persons", personModel);
+        //}
 
-        [HttpPost]
-        public IActionResult DeletePersonById(int PersonID)
-        {            
-            PeopleViewModel.DeletePerson(PersonID);
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public IActionResult DeletePersonById(int PersonID)
+        //{            
+        //    DeletePerson(PersonID);
+        //    return RedirectToAction("Index");
+        //}
 
     }
 }
